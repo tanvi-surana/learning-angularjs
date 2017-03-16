@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>
+        Mouse Over add Panel Class foundation css
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.css">
+</head>
+<body ng-app="myApp">
+   
+   <panel-cntrl></panel-cntrl>
+   <panel-cntrl mystyle="button"></panel-cntrl>
+   
+   
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script>
+    
+        var app=angular.module('myApp',[]);
+        app.directive('panelCntrl',function(){
+            return{
+                restrict:'E',
+                templateUrl:'partial/panel.html',
+                replace:true, //If you don't write replace true, template is added //to panel-cntrl
+                transclude:true,//allows you to add text
+                
+                link:function(scope,element,attrs)
+                {
+                    //jquery type
+                    element.bind('mouseenter',function(){
+                        console.log("Entering");
+                        element.addClass("panel");
+                        element.addClass("callout");
+                        element.addClass("radius");
+                        element.addClass(attrs.mystyle)
+                        //panel callout radius
+                    }),
+                    
+                    element.bind('mouseleave',function(){
+                        console.log("Leaving");
+                        element.removeClass("panel");
+                        element.removeClass("callout");
+                        element.removeClass("radius");
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

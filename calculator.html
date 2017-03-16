@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title></title>    
+    </head>
+    <body>
+      <div ng-app="myFirstApp">
+         <div id="numbers">
+             <div id="row123">
+                 <div ng-model="val1"></div>
+                 <div ng-model="val2"></div>
+                 <div ng-model="val3"></div>
+             </div>
+             <div id="row456">
+                 <div ng-model="val4"></div>
+                 <div ng-model="val5"></div>
+                 <div ng-model="val6"></div>
+             </div>
+             <div id="row789">
+                 <div ng-model="val7"></div>
+                 <div ng-model="val8"></div>
+                 <div ng-model="val9"></div>
+             </div>
+         </div>
+         <div id="operators">
+             
+         </div>  
+      </div>
+    
+    
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script>
+        
+        var app=angular.module('myFirstApp',[])
+        
+        app.controller('firstController',function($scope){
+            
+            $scope.x=1
+            
+             $scope.resultantVal=function()
+            {
+                console.log("called")
+               $scope.addedVal=$scope.input1+$scope.input2
+               console.log($scope.addedVal)
+            }
+        })
+        
+    </script>
+    </body>
+</html>

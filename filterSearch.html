@@ -1,0 +1,47 @@
+<html>
+<title>Angular Demo</title>
+    
+    <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.css"/>
+    
+<body ng-app="myApp">  
+    <div ng-controller="AppCtrl">
+        
+        <button ng-click="loadData()">Load</button>
+        
+        <input type="text" ng-model="search.name" placeholder="Search by Name"/>
+        <input type="text" ng-model="search.role" placeholder="Search by Role"/>
+        <input type="text" ng-model="search.$" placeholder="Search Anything"/>
+        <div>
+            
+            <ul ng-repeat="employee in employees | filter: search ">
+                <li>{{employee.id}}</li>
+                <li>{{employee.name | uppercase}}</li>
+                <li>{{employee.role}}</li>
+            </ul>
+            
+        </div>
+    </div>
+   
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script> 
+    <script>
+        var app = angular.module('myApp', [])
+    
+        app.controller('AppCtrl', function($scope, $http){
+            
+            console.log($scope)
+            
+            $scope.loadData = function(){
+                $http({
+                url: 'data.json',
+                method: 'GET'
+                }).then(function(res){
+                    console.log(res)
+                    $scope.employees = res.data
+                })
+            }
+                    
+        })  
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body ng-app="myFirstApp">
+  <div ng-controller="firstController">
+   <input ng-model="input1" type="number">
+   <input ng-model="input2" type="number">
+   {{x}}
+   <button ng-click="resultantVal()">Add</button>
+    Trying
+    {{addedVal}}
+   
+</div>   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script>
+        
+        var app=angular.module('myFirstApp',[])
+        
+        app.controller('firstController',function($scope){
+            
+            $scope.x=1
+            
+             $scope.resultantVal=function()
+            {
+                console.log("called")
+               $scope.addedVal=$scope.input1+$scope.input2
+               console.log($scope.addedVal)
+            }
+        })
+        
+    </script>
+</body>
+</html>

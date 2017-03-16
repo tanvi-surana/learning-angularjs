@@ -1,0 +1,28 @@
+<html>
+    <head></head>
+    <body>
+        
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    
+    
+    <script>
+        var app=angular.module('myApp',[]);
+        app.directive('thumbCntrl',function(){
+            return{
+                restrict:'E',
+                templateUrl:'partial/thumbnail.html',
+                replace:true, //If you don't write replace true, template is added //to panel-cntrl
+                transclude:true,//allows you to add text
+                
+                link:function(scope,element,attrs)
+                {
+                    //jquery type
+                    console.log(attrs.mytitle);
+                    scope.addingATitle=attrs.mytitle;
+                }
+            }
+        })
+    </script>
+    </body>
+</html>

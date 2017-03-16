@@ -1,0 +1,75 @@
+<html>
+<title>Angular Demo</title>
+    
+    <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<body ng-app="myApp">   
+   
+                     
+    <div ng-controller="AppCtrl">
+           
+           <input type="text" ng-model="search.name" placeholder="search anything"/>
+           
+<!--            <div ng-repeat="i in arr | filter: search">-->
+                <thumb-cntrl ng-repeat="i in arr | filter:search" name={{i.name}}></thumb-cntrl>      
+<!--            </div>-->
+    </div>
+    
+   
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script> 
+    <script>
+        
+            var app = angular.module('myApp', [])
+            app.directive('thumbCntrl',function(){
+            return{
+                restrict:'E',
+                templateUrl:'partial/thumbnail2.html',
+                replace:true, //If you don't write replace true, template is added 
+                //to panel-cntrl
+                transclude:true,//allows you to add text
+                scope:{},
+                link:function(scope,element,attrs)
+                {
+                    //jquery type
+                    console.log("In the link function");
+                    console.log(attrs.name);
+                    scope.name=attrs.name;
+                    console.log(scope)
+                    scope.test = "dsasg"
+                     
+                }
+            }
+        })
+        app.controller('AppCtrl', function($scope, $http)
+        {
+            $scope.arr=[
+                {name: 'Ravi'},
+                {name: 'Priya'},
+                {name: 'Amit'},
+                {name:'Priya'},
+            ];
+             
+            //console.log($scope)            
+        })  
+        
+        
+//        app.controller('AppCtrl', function($scope, $http){
+//            
+//            console.log($scope)
+//            
+//            $scope.loadData = function(){
+//                $http({
+//                url: 'data.json',
+//                method: 'GET'
+//                }).then(function(res){
+//                    console.log(res)
+//                    $scope.arr = res.data
+//                })
+//            }
+//                    
+//        })  
+        
+    </script>
+    
+</body>
+</html>
